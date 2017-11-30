@@ -1,10 +1,14 @@
-import { HeaderComponent } from './header/header.component';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LimitToPipe } from 'app/shared/pipes/limit-to.pipe';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
+
+import { HeaderComponent } from './header/header.component';
+
+import { LimitToPipe } from 'app/shared/pipes/limit-to.pipe';
+
 import { NgbTypeaheadModule, NgbModule, NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MomentModule } from 'angular2-moment';
 
 const sharedComponents = [HeaderComponent];
@@ -17,7 +21,8 @@ const sharedComponents = [HeaderComponent];
     JsonpModule,
     NgbTypeaheadModule,
     NgbModule,
-    MomentModule
+    MomentModule,
+    InfiniteScrollModule
   ],
   declarations: [
     ...sharedComponents,

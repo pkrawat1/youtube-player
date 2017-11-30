@@ -1,0 +1,13 @@
+.card {
+  cursor: pointer;
+  transition: all 500ms;
+  display: -webkit-inline-box;
+  width: 100%;
+  margin-bottom: 25px;
+  box-shadow: 0 0px 1px #efefef;
+  border: 0;
+  &:hover {
+    box-shadow: 0 2px 20px 0 #bbb;
+    border: 0;
+  }
+}

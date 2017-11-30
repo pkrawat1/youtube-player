@@ -10,7 +10,6 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 @Component({
   selector: 'app-youtube-feeds',
   templateUrl: './youtube-feeds.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./youtube-feeds.component.css'],
 })
 
@@ -67,5 +66,9 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.trendingSubs$.unsubscribe();
     this.videoDetailSubs$.unsubscribe();
+  }
+
+  public onScroll() {
+    console.log('scrolled');
   }
 }
