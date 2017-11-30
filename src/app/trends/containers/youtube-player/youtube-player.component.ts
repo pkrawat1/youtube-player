@@ -1,19 +1,19 @@
-import { DomSanitizer } from '@angular/platform-browser';
-import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { YoutubeService } from 'app/trends/services/youtube.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-youtube-player',
   templateUrl: './youtube-player.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./youtube-player.component.scss']
 })
 export class YoutubePlayerComponent implements OnInit {
   public loader = true;
-  private embedUrl: any;
-  private videoId: any;
-  private routerSubs$: Subscription;
+  public embedUrl$: Observable<SafeResourceUrl>;
 
   constructor(
     private ytService: YoutubeService,
@@ -22,14 +22,13 @@ export class YoutubePlayerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.routerSubs$ = this.router.params.subscribe(
+    this.embedUrl$ = this.router.params.map(
       params => {
-        this.videoId = params['id'];
-
-        this.embedUrl = this
+        const videoId = params['id'];
+        return this
           .sanitizer
           .bypassSecurityTrustResourceUrl(
-            `https://www.youtube.com/embed/${this.videoId}?autoplay=1`
+            `https://www.youtube.com/embed/${videoId}?autoplay=1`
           );
       }
     );

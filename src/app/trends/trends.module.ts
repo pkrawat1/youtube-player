@@ -14,7 +14,7 @@ const trendsComponents = [
   YoutubeFeedsComponent,
   TrendsComponent,
   YoutubeFeedCardComponent,
-  YoutubePlayerComponent,  
+  YoutubePlayerComponent,
 ]
 
 @NgModule({

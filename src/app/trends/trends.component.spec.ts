@@ -4,6 +4,10 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { TrendsComponent } from './trends.component';
+import { SharedModule } from 'app/shared/shared.module';
+import { TrendsModule } from 'app/trends/trends.module';
+import { ChildrenOutletContexts } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('TrendsComponent', () => {
   let component: TrendsComponent;
@@ -11,7 +15,9 @@ describe('TrendsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrendsComponent ]
+      declarations: [  ],
+      imports: [SharedModule, TrendsModule, RouterTestingModule],
+      providers: [ChildrenOutletContexts]
     })
     .compileComponents();
   }));
