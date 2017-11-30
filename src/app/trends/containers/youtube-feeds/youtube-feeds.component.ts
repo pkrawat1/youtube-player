@@ -10,7 +10,7 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 @Component({
   selector: 'app-youtube-feeds',
   templateUrl: './youtube-feeds.component.html',
-  styleUrls: ['./youtube-feeds.component.css'],
+  styleUrls: ['./youtube-feeds.component.scss'],
 })
 
 export class YoutubeFeedsComponent implements OnInit, OnDestroy {
@@ -54,8 +54,11 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
   public getVideoStats(videoIndex: number, videoId: any): void {
     this.videoDetailSubs$ = this.youtubeService.getVideoDetails(videoId).subscribe((result) => {
       if (this.videoDetailSubs$) { this.videoDetailSubs$.unsubscribe(); }
-      this.trendingVideos[videoIndex].viewCount = result.items[0].statistics.viewCount;
-      this.trendingVideos[videoIndex].likeCount = result.items[0].statistics.likeCount;
+      this.trendingVideos[videoIndex] = {
+        ...this.trendingVideos[videoIndex],
+        viewCount: result.items[0].statistics.viewCount,
+        likeCount: result.items[0].statistics.likeCount
+      } as VideoFeed;
     });
   }
 

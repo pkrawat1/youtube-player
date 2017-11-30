@@ -1,6 +1,6 @@
 <div class="card" *ngIf="video" [routerLink]="['/player', video.id]">
   <div class="img-container">
-    <img src="{{video.thumbnail}}">
+    <img class="rounded-left" src="{{video.thumbnail}}">
   </div>
   <div class="video-desc">
     <b>{{ video.title | limitTo: 28 }}</b>

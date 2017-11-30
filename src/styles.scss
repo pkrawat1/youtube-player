@@ -4,6 +4,7 @@
   background-size: 150px 150px;
   background-repeat: no-repeat;
   background-image: url('/assets/loader.gif');
+  background-blend-mode: darken;
   width: 150px;
   height: 150px;
   display: table;
@@ -19,56 +20,4 @@
 .dropdown-menu .active {
   color: #000000;
   background-color: rgba(0, 0, 0, 0)
-}
-
-/* youtube component styling */
-
-#youtube {
-  background-color: #f5f5f5;
-  padding: 35px !important;
-}
-
-#youtube .card-block {
-  display: inline-flex;
-  padding: 0;
-}
-
-#youtube .card-header {
-  display: none;
-  height: 40px;
-  background-size: 70px 40px;
-  background-position: 10px 0px;
-  background-repeat: no-repeat;
-}
-
-#youtube .card-header a {
-  display: none;
-}
-
-#youtube .img-container {
-  width: 120px;
-}
-
-#youtube img {
-  width: 120px;
-  height: 90px;
-}
-
-#youtube .video-title {
-  padding: 8px;
-  font-size: 14px;
-}
-
-#youtube b {
-  font-size: 14px;
-  color: #2381C9;
-}
-
-#youtube .video-desc {
-  font-size: 12px;
-  padding: 5px 10px 5px 10px;
-}
-
-.modal-body {
-  padding: 0px;
 }

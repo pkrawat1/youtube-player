@@ -1,0 +1,45 @@
+#page-header {
+  a {
+    color: #000000;
+  }
+
+  .glyphicon {
+    padding: 10px;
+    font-size: 30px;
+  }
+  
+  .form-group {
+    margin: 0;
+  }
+  
+  .fa {
+    padding: 10px;
+    font-size: 30px;
+  }
+  
+  .header-text {
+    vertical-align: super;
+    font-size: 25px;
+  }
+  
+  .nav-link {
+    float: right;
+    padding-right: 10px;
+  }
+  
+  input {
+    height: 35px;
+    font-size: 14px;
+    margin: 10px 0 10px 0;
+    box-shadow: inset 1px 1px 1px #ededed;
+    &:focus {
+      border-color: #aaa;
+      box-shadow: inset 1px 1px 1px #ededed;
+    }
+  }
+  
+  nav {
+    padding: 0;
+    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+  }
+}

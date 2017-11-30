@@ -7,7 +7,54 @@
   box-shadow: 0 0px 1px #efefef;
   border: 0;
   &:hover {
-    box-shadow: 0 2px 20px 0 #bbb;
+    box-shadow: 0 2px 20px 2px #bbb;
+    transform: scale(1.05);
     border: 0;
+    .img-container {
+      img {
+        transform: scale(1.2);
+      }
+    }
+  }
+  .card-block {
+    display: inline-flex;
+    padding: 0;
+  }
+  
+  .card-header {
+    display: none;
+    height: 40px;
+    background-size: 70px 40px;
+    background-position: 10px 0px;
+    background-repeat: no-repeat;
+  }
+  
+  .card-header a {
+    display: none;
+  }
+  
+  .img-container {
+    width: 120px;
+    overflow: hidden;
+    img {
+      width: 120px;
+      height: 90px;
+      transition: transform 500ms;
+    }
+  }
+  
+  .video-title {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  b {
+    font-size: 14px;
+    color: #2381C9;
+  }
+  
+  .video-desc {
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
   }
 }
