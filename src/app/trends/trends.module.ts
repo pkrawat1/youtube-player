@@ -7,6 +7,7 @@ import { routing } from './trends.routing';
 import { YoutubeFeedsComponent } from 'app/trends/containers/youtube-feeds/youtube-feeds.component';
 import { TrendsComponent } from 'app/trends/trends.component';
 import { YoutubeService } from 'app/trends/services/youtube.service';
+import { YoutubeFeedCardComponent } from './components/youtube-feed-card/youtube-feed-card.component';
 
 const trendsComponents = [
   YoutubeFeedsComponent,
@@ -20,7 +21,8 @@ const trendsComponents = [
     routing
   ],
   declarations: [
-    ...trendsComponents
+    ...trendsComponents,
+    YoutubeFeedCardComponent,
   ],
   providers: [
     YoutubeService

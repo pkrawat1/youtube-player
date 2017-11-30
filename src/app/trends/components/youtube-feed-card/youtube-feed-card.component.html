@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="img-container">
+    <img src="{{video.thumbnail}}">
+  </div>
+  <div class="video-desc">
+    <b>{{ video.title | limitTo: 28 }}</b>
+    <br> {{ video.viewCount }} views
+    <br> {{ video.likeCount }} likes
+    <br> {{ video.publishedAt }}
+  </div>
+</div>

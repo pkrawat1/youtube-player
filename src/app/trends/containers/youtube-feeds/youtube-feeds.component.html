@@ -1,18 +1,8 @@
-<div id="youtube" *ngIf="loader===false">
+<div id="youtube" [hidden]="loader">
   <div class="row">
-    <div class="col-md-4 col-sm-12" *ngFor="let videos of trendingVideos; let i = index">
-      <div class="card" (click)="this.openVideoPlayer(videos.id)">
-          <div class="img-container">
-            <img src="{{videos.thumbnail}}">
-          </div>
-          <div class="video-desc">
-            <b>{{ videos.title | limitTo: 28 }}</b><br>
-            {{ videos.viewCount }} views<br>
-            {{ videos.likeCount }} likes<br>
-            {{ videos.publishedAt }}
-          </div>
-      </div>
+    <div class="col-md-4 col-sm-12" *ngFor="let video of trendingVideos; trackBy: trackByFn; let i = index">
+      <app-youtube-feed-card [video]="video"></app-youtube-feed-card>
     </div>
   </div>
 </div>
-<div class="loader" *ngIf="loader===true"></div>
+<div class="loader" [hidden]="!loader"></div>

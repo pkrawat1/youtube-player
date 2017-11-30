@@ -12,7 +12,7 @@ import { ContextService } from 'app/core/services/context.service';
 })
 
 export class YoutubeFeedsComponent implements OnInit {
-  private loader: any;
+  public loader: any;
   private videoLoader: any;
   private country: any;
   private trendingVideos: any[] = [];
@@ -67,5 +67,9 @@ export class YoutubeFeedsComponent implements OnInit {
     this.videoLoader = true;
     this.videoId = videoId;
     this.embedUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + videoId + '?autoplay=1');
+  }
+
+  public trackByFn(item, _index) {
+    return item.id;
   }
 }
