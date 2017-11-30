@@ -2,22 +2,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { YoutubeFeedsComponent } from './youtube-feeds.component';
 
-import { YoutubeComponent } from './youtube.component';
-
-describe('YoutubeComponent', () => {
-  let component: YoutubeComponent;
-  let fixture: ComponentFixture<YoutubeComponent>;
+describe('YoutubeFeedsComponent', () => {
+  let component: YoutubeFeedsComponent;
+  let fixture: ComponentFixture<YoutubeFeedsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ YoutubeComponent ]
+      declarations: [ YoutubeFeedsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(YoutubeComponent);
+    fixture = TestBed.createComponent(YoutubeFeedsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
