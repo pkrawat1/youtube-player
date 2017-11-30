@@ -3,7 +3,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import * as moment from 'moment';
 import { YoutubeService } from 'app/trends/services/youtube.service';
-import { ContextService } from 'app/shared/services/context.service';
+import { ContextService } from 'app/core/services/context.service';
 
 @Component({
   selector: 'app-youtube-feeds',
@@ -12,22 +12,24 @@ import { ContextService } from 'app/shared/services/context.service';
 })
 
 export class YoutubeFeedsComponent implements OnInit {
-
   private loader: any;
   private videoLoader: any;
   private country: any;
   private trendingVideos: any[] = [];
   private embedUrl: any;
   private videoId: any;
+
   constructor(
     private youtubeService: YoutubeService,
     private sanitizer: DomSanitizer,
     public appContext: ContextService
-  ) {}
+  ) { }
+
   public loadVideo(): void {
     console.log('AAA');
     this.videoLoader = false;
   }
+
   ngOnInit() {
     this.loadVideos('');
     this.appContext.countryChanged.subscribe(
@@ -37,6 +39,7 @@ export class YoutubeFeedsComponent implements OnInit {
       }
     );
   }
+
   public loadVideos(countryCode: string): void {
     this.loader = true;
     this.youtubeService.getTrendingVideos(this.country).subscribe((result) => {

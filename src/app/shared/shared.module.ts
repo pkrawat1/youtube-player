@@ -1,7 +1,6 @@
 import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContextService } from 'app/shared/services/context.service';
 import { LimitToPipe } from 'app/shared/pipes/limit-to.pipe';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -25,12 +24,11 @@ const sharedComponents = [HeaderComponent];
     LimitToPipe,
   ],
   providers: [
-    ContextService,
     NgbTypeaheadConfig
   ],
   exports: [
     HeaderComponent,
-    LimitToPipe,
+    LimitToPipe
   ]
 })
 export class SharedModule { }

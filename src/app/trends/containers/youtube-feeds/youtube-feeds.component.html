@@ -1,18 +1,3 @@
-<!-- <modal #modal (onDismiss)="modalDismiss()">
-    <modal-header [show-close]="true">
-        <h4 class="modal-title">Modal</h4>
-    </modal-header>
-    <modal-body>
-      <div class="video-container">
-        <div class="video-load" *ngIf="videoLoader"><div class="loader" style="margin-top: 75px;"></div></div>
-        <iframe (load)='loadVideo()' width="100%" height="315" [src]="embedUrl" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </modal-body>
-    <modal-footer>
-      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modalClose()">Close</button>
-    </modal-footer>
-</modal> -->
-
 <div id="youtube" *ngIf="loader===false">
   <div class="row">
     <div class="col-md-4 col-sm-12" *ngFor="let videos of trendingVideos; let i = index">
