@@ -8,10 +8,13 @@ import { YoutubeFeedsComponent } from 'app/trends/containers/youtube-feeds/youtu
 import { TrendsComponent } from 'app/trends/trends.component';
 import { YoutubeService } from 'app/trends/services/youtube.service';
 import { YoutubeFeedCardComponent } from './components/youtube-feed-card/youtube-feed-card.component';
+import { YoutubePlayerComponent } from './containers/youtube-player/youtube-player.component';
 
 const trendsComponents = [
   YoutubeFeedsComponent,
-  TrendsComponent
+  TrendsComponent,
+  YoutubeFeedCardComponent,
+  YoutubePlayerComponent,  
 ]
 
 @NgModule({
@@ -22,7 +25,6 @@ const trendsComponents = [
   ],
   declarations: [
     ...trendsComponents,
-    YoutubeFeedCardComponent,
   ],
   providers: [
     YoutubeService

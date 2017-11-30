@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import * as moment from 'moment';
 import { YoutubeService } from 'app/trends/services/youtube.service';
@@ -13,22 +12,13 @@ import { ContextService } from 'app/core/services/context.service';
 
 export class YoutubeFeedsComponent implements OnInit {
   public loader: any;
-  private videoLoader: any;
   private country: any;
   private trendingVideos: any[] = [];
-  private embedUrl: any;
-  private videoId: any;
 
   constructor(
     private youtubeService: YoutubeService,
-    private sanitizer: DomSanitizer,
     public appContext: ContextService
   ) { }
-
-  public loadVideo(): void {
-    console.log('AAA');
-    this.videoLoader = false;
-  }
 
   ngOnInit() {
     this.loadVideos('');
@@ -61,12 +51,6 @@ export class YoutubeFeedsComponent implements OnInit {
       this.trendingVideos[videoIndex].viewCount = result.items[0].statistics.viewCount;
       this.trendingVideos[videoIndex].likeCount = result.items[0].statistics.likeCount;
     });
-  }
-
-  public openVideoPlayer(videoId: any): void {
-    this.videoLoader = true;
-    this.videoId = videoId;
-    this.embedUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + videoId + '?autoplay=1');
   }
 
   public trackByFn(item, _index) {

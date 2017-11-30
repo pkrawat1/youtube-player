@@ -1,11 +1,4 @@
 /* custom css here */
-.video-load {
-  background-color: #ffffff;
-  height: 315px;
-  width: 100%;
-  z-index: 999;
-  position: fixed;
-}
 
 .loader {
   background-size: 150px 150px;
@@ -28,30 +21,10 @@
   background-color: rgba(0, 0, 0, 0)
 }
 
-.modal {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.modal-header {
-  display: none;
-}
-
-.modal-footer {
-  border: 0;
-  background-color: #000000;
-}
-
-.modal-content {
-  border: 0;
-  background-color: #000000;
-}
-
-
 /* youtube component styling */
 
 #youtube {
   background-color: #f5f5f5;
-  margin-top: 40px;
   padding: 35px !important;
 }
 
