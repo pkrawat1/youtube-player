@@ -1,4 +1,4 @@
-<div class="card" [routerLink]="['/player', video.id]">
+<div class="card" *ngIf="video" [routerLink]="['/player', video.id]">
   <div class="img-container">
     <img src="{{video.thumbnail}}">
   </div>
