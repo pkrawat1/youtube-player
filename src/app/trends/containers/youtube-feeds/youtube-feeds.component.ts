@@ -1,15 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import * as moment from 'moment';
 import { YoutubeService } from 'app/trends/services/youtube.service';
-import { ContextService } from 'app/shared/context.service';
+import { ContextService } from 'app/shared/services/context.service';
 
 @Component({
   selector: 'app-youtube-feeds',
-  templateUrl: './youtube.component.html',
-  styleUrls: ['./youtube.component.css'],
+  templateUrl: './youtube-feeds.component.html',
+  styleUrls: ['./youtube-feeds.component.css'],
 })
 
 export class YoutubeFeedsComponent implements OnInit {
@@ -20,9 +19,6 @@ export class YoutubeFeedsComponent implements OnInit {
   private trendingVideos: any[] = [];
   private embedUrl: any;
   private videoId: any;
-  @ViewChild('modal')
-  private modal: ModalComponent;
-
   constructor(
     private youtubeService: YoutubeService,
     private sanitizer: DomSanitizer,
@@ -33,7 +29,6 @@ export class YoutubeFeedsComponent implements OnInit {
     this.videoLoader = false;
   }
   ngOnInit() {
-    this.modal.backdrop = false;
     this.loadVideos('');
     this.appContext.countryChanged.subscribe(
       (lang) => {
@@ -69,16 +64,5 @@ export class YoutubeFeedsComponent implements OnInit {
     this.videoLoader = true;
     this.videoId = videoId;
     this.embedUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + videoId + '?autoplay=1');
-    this.modal.open();
-  }
-
-  public modalDismiss() {
-    this.embedUrl = null;
-  }
-
-  public modalClose() {
-    console.log('VIDEO PLAYER CLOSED !!');
-    this.modal.close();
-    this.embedUrl = null;
   }
 }
