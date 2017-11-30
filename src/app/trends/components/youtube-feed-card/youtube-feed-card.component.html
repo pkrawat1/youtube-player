@@ -3,7 +3,7 @@
     <img class="rounded-left" src="{{video.thumbnail}}">
   </div>
   <div class="video-desc">
-    <b>{{ video.title | limitTo: 28 }}</b>
+    <b class="video-title">{{ video.title | limitTo: 28 }}</b>
     <br> {{ video.viewCount }} views
     <br> {{ video.likeCount }} likes
     <br> {{ video.publishedAt }}

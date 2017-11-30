@@ -44,13 +44,12 @@
   }
   
   .video-title {
-    padding: 8px;
-    font-size: 14px;
-  }
-  
-  b {
-    font-size: 14px;
+    font-size: 1.5rem;
     color: #2381C9;
+    @media screen and (max-width: 500px) {
+      font-size: 1.3rem;
+      font-weight: 400;
+    }
   }
   
   .video-desc {
