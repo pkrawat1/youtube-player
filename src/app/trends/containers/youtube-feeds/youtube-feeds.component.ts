@@ -22,7 +22,7 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
 
   constructor(
     private youtubeService: YoutubeService,
-    public appContext: ContextService
+    public appContext: ContextService,
   ) { }
 
   ngOnInit() {
@@ -30,30 +30,48 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
     this.appContext.countryChanged.subscribe(
       (lang) => {
         this.country = this.appContext.getCountry();
+        this.trendingVideos = [];
         this.loadVideos(this.country);
       }
     );
   }
 
+  /**
+   * sets a subscribtion for retriveing trending
+   * videos from youtube api.
+   * Updates loader flag before and after request is completed.
+   * @param {string} countryCode
+   * @memberof YoutubeFeedsComponent
+   */
   public loadVideos(countryCode: string): void {
     this.loader = true;
-    this.trendingSubs$ = this.youtubeService.getTrendingVideos(this.country).subscribe((result) => {
-      for (let i = 0; i < result.items.length; i++) {
-        this.trendingVideos[i] = {
-          id: result.items[i].id,
-          title: result.items[i].snippet.title,
-          thumbnail: result.items[i].snippet.thumbnails.high.url,
-          publishedAt: moment(result.items[i].snippet.publishedAt).fromNow()
+    this.trendingSubs$ = this.youtubeService.getTrendingVideos(this.country).subscribe((videos) => {
+      const currentTotal = this.trendingVideos.length;
+      const newTotal = currentTotal + videos.length
+      for (let i = 0, j = this.trendingVideos.length; i < videos.length; i++, j++) {
+        this.trendingVideos[j] = {
+          id: videos[i].id,
+          title: videos[i].snippet.title,
+          thumbnail: videos[i].snippet.thumbnails.high.url,
+          publishedAt: moment(videos[i].snippet.publishedAt).fromNow()
         } as VideoFeed;
-        this.getVideoStats(i, result.items[i].id);
+        this.getVideoStats(j, videos[i].id);
       }
       this.loader = false;
     });
   }
 
-  public getVideoStats(videoIndex: number, videoId: any): void {
+  /**
+   * Updates individual video item with
+   * there stats to show view and like count
+   * @param {number} videoIndex
+   * @param {string} videoId
+   * @memberof YoutubeFeedsComponent
+   */
+  public getVideoStats(videoIndex: number, videoId: string): void {
     this.videoDetailSubs$ = this.youtubeService.getVideoDetails(videoId).subscribe((result) => {
       if (this.videoDetailSubs$) { this.videoDetailSubs$.unsubscribe(); }
+      // updating reference to trigger change detection
       this.trendingVideos[videoIndex] = {
         ...this.trendingVideos[videoIndex],
         viewCount: result.items[0].statistics.viewCount,
@@ -62,7 +80,15 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
     });
   }
 
-  public trackByFn(item, _index) {
+  /**
+   * Provides a key to *ngFor so that angular
+   * can identify which element was removed and added in an efficent manner
+   * @param {VideoFeed} item
+   * @param {number} _index
+   * @returns
+   * @memberof YoutubeFeedsComponent
+   */
+  public trackByFn(item: VideoFeed, _index: number) {
     return item.id;
   }
 
@@ -72,6 +98,6 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
   }
 
   public onScroll() {
-    console.log('scrolled');
+    this.loadVideos(this.country);
   }
 }

@@ -177,6 +177,16 @@
     source-map "^0.5.6"
     tree-kill "^1.0.0"
 
+"@ngx-progressbar/core@3.0.0", "@ngx-progressbar/core@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-progressbar/core/-/core-3.0.0.tgz#d8b9bdcdb760925970906466b4c2c3c4c468d8c2"
+
+"@ngx-progressbar/http-client@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-progressbar/http-client/-/http-client-3.0.0.tgz#25344110e033e8d2205443821acddca5fa7e34c4"
+  dependencies:
+    "@ngx-progressbar/core" "3.0.0"
+
 "@schematics/angular@~0.1.8":
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-0.1.8.tgz#2c98cda013a2b87ff457a749775b95b3a2475698"

@@ -1,7 +1,7 @@
-<div id="youtube-feeds" [hidden]="loader"
+<div id="youtube-feeds"
     infiniteScroll
-    infiniteScrollDistance="1"
-    infiniteScrollThrottle="5"
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="500"
     (scrolled)="onScroll()">
   <div class="row">
     <div class="col-md-6 col-lg-4 col-sm-12" *ngFor="let video of trendingVideos; trackBy: trackByFn; let i = index">

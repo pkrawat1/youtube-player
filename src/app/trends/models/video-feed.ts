@@ -5,4 +5,13 @@ export interface VideoFeed {
   publishedAt: string;
   viewCount: number;
   likeCount: number;
+  snippet: {
+    title: string;
+    thumbnails: {
+      high: {
+        url: string
+      }
+    };
+    publishedAt: string;
+  }
 };
