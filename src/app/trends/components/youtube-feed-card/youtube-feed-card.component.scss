@@ -1,6 +1,6 @@
 .card {
   cursor: pointer;
-  transition: all 500ms;
+  transition: all 200ms;
   display: -webkit-inline-box;
   width: 100%;
   margin-bottom: 25px;
@@ -8,7 +8,7 @@
   border: 0;
   &:hover {
     box-shadow: 0 2px 20px 2px #bbb;
-    transform: scale(1.05);
+    transform: translateY(-3%);
     border: 0;
     .img-container {
       img {

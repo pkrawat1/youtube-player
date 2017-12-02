@@ -10,6 +10,7 @@ import { LimitToPipe } from 'app/shared/pipes/limit-to.pipe';
 import { NgbTypeaheadModule, NgbModule, NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MomentModule } from 'angular2-moment';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 const sharedComponents = [HeaderComponent];
 
@@ -22,7 +23,8 @@ const sharedComponents = [HeaderComponent];
     NgbTypeaheadModule,
     NgbModule,
     MomentModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    LazyLoadImageModule
   ],
   declarations: [
     ...sharedComponents,
@@ -33,7 +35,8 @@ const sharedComponents = [HeaderComponent];
   ],
   exports: [
     HeaderComponent,
-    LimitToPipe
+    LimitToPipe,
+    LazyLoadImageModule
   ]
 })
 export class SharedModule { }

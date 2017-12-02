@@ -4110,6 +4110,10 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+ng-lazyload-image@^3.3.3:
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/ng-lazyload-image/-/ng-lazyload-image-3.3.5.tgz#41f3989e40015e777d001412ce0b0d0ab3c63923"
+
 ngx-infinite-scroll@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/ngx-infinite-scroll/-/ngx-infinite-scroll-0.7.0.tgz#a390c61c6a05ac14485e1c5bc8b4e6f6bd62fd6a"
