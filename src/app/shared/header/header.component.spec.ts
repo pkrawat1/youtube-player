@@ -79,8 +79,8 @@ describe('HeaderComponent', () => {
 
   it('should not set country in context service if selectedCountry is null',
     inject([ContextService], (service) => {
-      expect(component.selectCountry(null)).toBeUndefined();
-      expect(service.getCountry()).toBe('');
+      expect(component.selectCountry('' as any)).toBeUndefined();
+      expect(service.getCountry()).toBeUndefined();
     })
   );
 });
