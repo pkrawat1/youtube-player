@@ -9,7 +9,7 @@ describe('AgoFromNowPipe', () => {
 
   it('shows time from now', () => {
     const pipe = new AgoFromNowPipe();
-    const timeNow = moment();
+    const timeNow = `${moment()}`;
     const fromNow = moment(timeNow).fromNow();
     expect(pipe.transform(timeNow)).toBeTruthy(fromNow);
   });

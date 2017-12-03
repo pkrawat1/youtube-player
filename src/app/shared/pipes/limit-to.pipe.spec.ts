@@ -11,6 +11,8 @@ describe('LimitToPipe', () => {
 
   it('trims string', () => {
     let pipe = new LimitToPipe();
-    expect(pipe.transform('abcdef', '2')).toBeTruthy('ab');
+    expect(pipe.transform('abcdef', '2')).toBe('ab....');
+    expect(pipe.transform(null, '2')).toBe('');
+    expect(pipe.transform('12345678901234567890', '')).toBe('1234567890....');
   });
 });

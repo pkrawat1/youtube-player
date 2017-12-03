@@ -45,7 +45,7 @@ describe('HeaderComponent', () => {
     expect(service.getCountry()).toBe(selectCountry.code);
   }));
 
-  it('should set Country', () => {
+  it('should get country for search term', () => {
     const selectCountry = countryList[0];
     component.search(of(selectCountry.name)).subscribe(
       countries => {
@@ -55,8 +55,32 @@ describe('HeaderComponent', () => {
     )
   });
 
-  it('should set Country', () => {
+  it('should not get country for search term with less than 2 character', () => {
+    const selectCountry = countryList[0];
+    component.search(of('i')).subscribe(
+      countries => {
+        expect(countries.length).toBe(0);
+      }
+    )
+  });
+
+  it('should get country name from formatter', () => {
     const selectCountry = countryList[0];
     expect(component.formatter(selectCountry)).toBe(selectCountry.name);
   });
+
+  it('should set country in context service',
+    inject([ContextService], (service) => {
+      let selectCountry = countryList[0];
+      expect(component.selectCountry(selectCountry)).toBeUndefined();
+      expect(service.getCountry()).toBe(selectCountry.code);
+    })
+  );
+
+  it('should not set country in context service if selectedCountry is null',
+    inject([ContextService], (service) => {
+      expect(component.selectCountry(null)).toBeUndefined();
+      expect(service.getCountry()).toBe('');
+    })
+  );
 });
