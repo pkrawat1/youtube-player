@@ -1,4 +1,4 @@
-<div id="youtube-feeds"
+<div class="YoutubeListings"
     infiniteScroll
     [infiniteScrollDistance]="3"
     [infiniteScrollThrottle]="500"
@@ -9,4 +9,4 @@
     </div>
   </div>
 </div>
-<div class="loader bg-faded" [ngClass]="{'mt-0': trendingVideos?.length === 0}" [hidden]="!loader"></div>
+<div class="loader bg-faded loader--modifier" [ngClass]="{'mt-0': trendingVideos?.length === 0}" [hidden]="!loader"></div>

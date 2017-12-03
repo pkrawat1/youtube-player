@@ -1,16 +1,16 @@
 <ng-template #typeAheadTemplate let-country="result" let-t="term">
   	{{ country.name }}
 </ng-template>
-<div id="page-header">
-  <nav class="navbar bg-faded navbar-fixed-top">
-		<div class="col-md-3 hidden-md-down">
+<header>
+  <nav class="navbar bg-faded navbar-fixed-top text-dark">
+		<a class="col-md-3 hidden-sm-down navbar__header" [routerLink]="['/']">
 			<span class="glyphicon glyphicon-flash" aria-hidden="true" href="#"></span>
-			<span class="header-text">trendings</span>
-	  </div>
-		<div class="col-md-6 col-xs-12">
+			<span class="navbar__header_text">trendings</span>
+	  </a>
+		<div class="col-xs-12 col-md-6">
 	    	<div class="form-group">
 	  			<input type="text"
-	  				   class="form-control"
+	  				   class="form-control navbar__search_input"
 	  				   placeholder="Enter your country"
 	  				   [(ngModel)]="selectedCountry"
 	  				   [ngbTypeahead]="search"
@@ -20,4 +20,4 @@
 			  </div>
 	  </div>
 	</nav>
-</div>
+</header>

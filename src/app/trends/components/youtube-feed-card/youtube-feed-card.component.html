@@ -1,11 +1,13 @@
-<div class="card" *ngIf="video" [routerLink]="['/player', video.id]">
-  <div class="img-container">
+<div class="YoutubeListingCard YoutubeListingCard--featured card" *ngIf="video" [routerLink]="['/player', video.id]">
+  <div class="YoutubeListingCard__thumbnail_container">
     <img [offset]="100" lazyLoad="{{thumbnail_url}}" class="rounded-left">
   </div>
-  <div class="video-desc">
-    <b class="video-title">{{ snippet.title | limitTo: 28 }}</b>
-    <br> {{ statistics?.viewCount }} views
-    <br> {{ statistics?.likeCount }} likes
-    <br> {{ snippet.publishedAt | agoFromNow }}
+  <div class="YoutubeListingCard__content">
+    <b class="YoutubeListingCard__content__title">{{ snippet.title | limitTo: 28 }}</b>
+    <div class="YoutubeListingCard__content__statistics">
+      {{ statistics?.viewCount }} views
+      <br> {{ statistics?.likeCount }} likes
+      <br> {{ snippet.publishedAt | agoFromNow }}
+    </div>
   </div>
 </div>

@@ -13,6 +13,7 @@ import { MomentModule } from 'angular2-moment';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ToastyModule } from 'ng2-toasty';
 import { AgoFromNowPipe } from './pipes/ago-from-now.pipe';
+import { RouterModule } from '@angular/router';
 
 const sharedComponents = [HeaderComponent];
 
@@ -20,6 +21,7 @@ const sharedComponents = [HeaderComponent];
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     NgbTypeaheadModule,
     NgbModule,
     MomentModule,
