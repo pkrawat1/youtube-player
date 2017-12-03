@@ -44,7 +44,7 @@ describe('YoutubeFeedsComponent', () => {
         expect(component.country).toBe('in');
         expect(window.pageYOffset).toBe(0);
         fixture.detectChanges();
-        expect(component.loadVideos('in', false)).toBeUndefined();
+        expect(component.loadVideos('in')).toBeUndefined();
       }
     )
   );

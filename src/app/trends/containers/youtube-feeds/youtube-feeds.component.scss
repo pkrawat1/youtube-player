@@ -1,5 +1,11 @@
 .YoutubeListings {
   padding: 4rem 2rem;
+  app-youtube-feed-card {
+    transition: opacity 500ms;
+    &.YoutubeListings__loading-card {
+      opacity: 0.1;
+    }
+  }
 }
 
 .loader--modifier {

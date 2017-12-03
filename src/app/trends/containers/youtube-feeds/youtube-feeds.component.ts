@@ -16,6 +16,7 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
   public loader: any;
   public country: any;
   public trendingVideos: VideoFeed[] = [];
+  public isNewSearch = true;
   private trendingSubs$: Subscription;
   private videoDetailSubs$: Subscription;
 
@@ -25,13 +26,14 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.loadVideos('', true);
+    this.loadVideos('');
     this.appContext.countryChanged.subscribe(
       (lang) => {
         this.country = this.appContext.getCountry();
         this.resetAllSubscription();
         window.scrollTo(0, 0);
-        this.loadVideos(this.country, true);
+        this.isNewSearch = true;
+        this.loadVideos(this.country);
       }
     );
   }
@@ -41,10 +43,9 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
    * videos from youtube api.
    * Updates loader flag before and after request is completed.
    * @param {string} countryCode
-   * @param {boolean} [isNewSearch=false]
    * @memberof YoutubeFeedsComponent
    */
-  public loadVideos(countryCode: string, isNewSearch = false): void {
+  public loadVideos(countryCode: string): void {
     this.loader = true;
     this.trendingSubs$ = this.youtubeService
       .getTrendingVideos(this.country)
@@ -55,7 +56,7 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
         let startIndex = this.trendingVideos.length;
         this.trendingVideos = [...this.trendingVideos, ...videos]
 
-        if (isNewSearch) {
+        if (this.isNewSearch) {
           startIndex = 0;
           this.trendingVideos = [...videos]
         }
@@ -101,7 +102,8 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
   }
 
   public onScroll() {
-    this.loadVideos(this.country, false);
+    this.isNewSearch = false;
+    this.loadVideos(this.country);
   }
 
   private resetAllSubscription() {
