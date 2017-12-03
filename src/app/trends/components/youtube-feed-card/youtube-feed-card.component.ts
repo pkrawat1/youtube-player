@@ -15,4 +15,11 @@ export class YoutubeFeedCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  get thumbnail_url() {
+    return this.snippet.thumbnails.high.url;
+  }
+
+  get snippet() { return this.video.snippet; }
+  get statistics() { return this.video.statistics; }
+
 }

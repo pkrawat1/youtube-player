@@ -1,7 +1,6 @@
 import { Subscription } from 'rxjs/Subscription';
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import * as moment from 'moment';
 import { YoutubeService } from 'app/trends/services/youtube.service';
 import { ContextService } from 'app/core/services/context.service';
 import { VideoFeed } from 'app/trends/models/video-feed';
@@ -26,13 +25,13 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.loadVideos('');
+    this.loadVideos('', true);
     this.appContext.countryChanged.subscribe(
       (lang) => {
         this.country = this.appContext.getCountry();
-        // In order to reuse the view and avoid DOM rerender
-        this.trendingVideos = new Array(24);
-        this.loadVideos(this.country);
+        this.resetAllSubscription();
+        // this.trendingVideos = this.trendingVideos.slice(0, 24);
+        this.loadVideos(this.country, true);
       }
     );
   }
@@ -44,22 +43,26 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
    * @param {string} countryCode
    * @memberof YoutubeFeedsComponent
    */
-  public loadVideos(countryCode: string): void {
+  public loadVideos(countryCode: string, isNewSearch: boolean): void {
     this.loader = true;
-    this.trendingSubs$ = this.youtubeService.getTrendingVideos(this.country).subscribe((videos) => {
-      const currentTotal = this.trendingVideos.length;
-      const newTotal = currentTotal + videos.length
-      for (let i = 0, j = this.trendingVideos.length; i < videos.length; i++, j++) {
-        this.trendingVideos[j] = {
-          id: videos[i].id,
-          title: videos[i].snippet.title,
-          thumbnail: videos[i].snippet.thumbnails.high.url,
-          publishedAt: moment(videos[i].snippet.publishedAt).fromNow()
-        } as VideoFeed;
-        this.getVideoStats(j, videos[i].id);
+    this.trendingSubs$ = this.youtubeService
+      .getTrendingVideos(this.country)
+      .subscribe(
+      (videos) => {
+
+        // Tracks incremental data on infinte scroll
+        let startIndex = this.trendingVideos.length;
+        this.trendingVideos = [...this.trendingVideos, ...videos]
+
+        if (isNewSearch) {
+          startIndex = 0;
+          this.trendingVideos = [...videos]
+        }
+
+        videos.map(video => this.getVideoStats(startIndex++, video.id))
+        this.loader = false;
       }
-      this.loader = false;
-    });
+      );
   }
 
   /**
@@ -75,30 +78,33 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
       // updating reference to trigger change detection
       this.trendingVideos[videoIndex] = {
         ...this.trendingVideos[videoIndex],
-        viewCount: video.statistics.viewCount,
-        likeCount: video.statistics.likeCount
-      } as VideoFeed;
+        statistics: video.statistics
+      };
     });
   }
 
   /**
    * Provides a key to *ngFor so that angular
    * can identify which element was removed and added in an efficent manner
-   * @param {VideoFeed} item
-   * @param {number} _index
+   * @param {number} index
+   * @param {VideoFeed} _item
    * @returns
    * @memberof YoutubeFeedsComponent
    */
-  public trackByFn(item: VideoFeed, _index: number) {
-    return item.id;
+  public trackByFn(index: number, _item: VideoFeed) {
+    return index;
   }
 
   ngOnDestroy() {
-    this.trendingSubs$.unsubscribe();
-    this.videoDetailSubs$.unsubscribe();
+    this.resetAllSubscription();
   }
 
   public onScroll() {
-    this.loadVideos(this.country);
+    this.loadVideos(this.country, false);
+  }
+
+  private resetAllSubscription() {
+    if (this.trendingSubs$) { this.trendingSubs$.unsubscribe(); }
+    if (this.videoDetailSubs$) { this.videoDetailSubs$.unsubscribe(); }
   }
 }

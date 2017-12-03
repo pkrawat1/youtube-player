@@ -1,11 +1,11 @@
 <div class="card" *ngIf="video" [routerLink]="['/player', video.id]">
   <div class="img-container">
-    <img [offset]="100" lazyLoad="{{video.thumbnail}}" class="rounded-left">
+    <img [offset]="100" lazyLoad="{{thumbnail_url}}" class="rounded-left">
   </div>
   <div class="video-desc">
-    <b class="video-title">{{ video.title | limitTo: 28 }}</b>
-    <br> {{ video.viewCount }} views
-    <br> {{ video.likeCount }} likes
-    <br> {{ video.publishedAt }}
+    <b class="video-title">{{ snippet.title | limitTo: 28 }}</b>
+    <br> {{ statistics?.viewCount }} views
+    <br> {{ statistics?.likeCount }} likes
+    <br> {{ snippet.publishedAt | agoFromNow }}
   </div>
 </div>
