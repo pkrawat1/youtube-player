@@ -49,6 +49,17 @@ describe('YoutubeFeedsComponent', () => {
     )
   );
 
+  it(`should load more videos on scroll`,
+  inject(
+    [ContextService, YoutubeService],
+    (contextService, youtubeService) => {
+      spyOn(component, 'ngOnInit').and.callThrough();
+      fixture.detectChanges();
+      expect(component.onScroll()).toBeUndefined();
+    }
+  )
+);
+
   it(`should unscubscribe subscriptions`,
     inject(
       [ContextService, YoutubeService],

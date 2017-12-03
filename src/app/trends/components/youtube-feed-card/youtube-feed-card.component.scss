@@ -35,7 +35,7 @@
   &__content {
     font-size: 12px;
     padding: 5px 10px 5px 10px;
-    &__title {
+    &_title {
       font-size: 1.5rem;
       color: #2381C9;
       @media screen and (max-width: 500px) {
@@ -44,7 +44,7 @@
       }
     }
 
-    &__statistics {
+    &_statistics {
       padding-top: 0;
     }
   }

@@ -3,8 +3,8 @@
     <img [offset]="100" lazyLoad="{{thumbnail_url}}" class="rounded-left">
   </div>
   <div class="YoutubeListingCard__content">
-    <b class="YoutubeListingCard__content__title">{{ snippet.title | limitTo: 28 }}</b>
-    <div class="YoutubeListingCard__content__statistics">
+    <b class="YoutubeListingCard__content_title">{{ snippet.title | limitTo: 28 }}</b>
+    <div class="YoutubeListingCard__content_statistics">
       {{ statistics?.viewCount }} views
       <br> {{ statistics?.likeCount }} likes
       <br> {{ snippet.publishedAt | agoFromNow }}

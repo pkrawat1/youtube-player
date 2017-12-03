@@ -50,21 +50,22 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
     this.trendingSubs$ = this.youtubeService
       .getTrendingVideos(this.country)
       .subscribe(
-      (videos) => {
+        (videos) => {
 
-        // Tracks incremental data on infinte scroll
-        let startIndex = this.trendingVideos.length;
-        this.trendingVideos = [...this.trendingVideos, ...videos]
+          // Tracks incremental data on infinte scroll
+          let startIndex = this.trendingVideos.length;
+          this.trendingVideos = [...this.trendingVideos, ...videos]
 
-        if (this.isNewSearch) {
-          startIndex = 0;
-          this.trendingVideos = [...videos]
-        }
+          if (this.isNewSearch) {
+            startIndex = 0;
+            this.trendingVideos = [...videos]
+          }
 
-        videos.map(video => this.getVideoStats(startIndex++, video.id))
-        this.loader = false;
-      }
-      );
+          videos.map(video => this.getVideoStats(startIndex++, video.id))
+          this.loader = false;
+        },
+        error => console.log(error)
+    );
   }
 
   /**

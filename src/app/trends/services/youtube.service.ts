@@ -91,6 +91,7 @@ export class YoutubeService {
       title: 'ERROR!!',
       msg: error.status
     });
-    return Observable.throw(error.status);
+    console.log('in catch error method');
+    return Observable.throw(error.message);
   }
 }
