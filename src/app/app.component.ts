@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,12 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'app works!';
+  routerSubs$: Subscription;
 
   constructor(private router: Router) { }
-  
+
   ngOnInit() {
-    this.router.events.subscribe((evt) => {
+    this.routerSubs$ = this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
       }

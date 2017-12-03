@@ -8,4 +8,9 @@ describe('LimitToPipe', () => {
     let pipe = new LimitToPipe();
     expect(pipe).toBeTruthy();
   });
+
+  it('trims string', () => {
+    let pipe = new LimitToPipe();
+    expect(pipe.transform('abcdef', '2')).toBeTruthy('ab');
+  });
 });

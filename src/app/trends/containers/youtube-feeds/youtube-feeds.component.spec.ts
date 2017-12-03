@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { YoutubeFeedsComponent } from './youtube-feeds.component';
@@ -31,4 +31,35 @@ describe('YoutubeFeedsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should set component props`,
+    inject(
+      [ContextService, YoutubeService],
+      (contextService, youtubeService) => {
+        spyOn(component, 'ngOnInit').and.callThrough();
+        fixture.detectChanges();
+        contextService.setCountry('in');
+        expect(contextService.country).toBe('in');
+        expect(contextService.getCountry()).toBe('in');
+        expect(component.country).toBe('in');
+        expect(window.pageYOffset).toBe(0);
+        fixture.detectChanges();
+        expect(component.loadVideos('in', false)).toBeUndefined();
+      }
+    )
+  );
+
+  it(`should unscubscribe subscriptions`,
+    inject(
+      [ContextService, YoutubeService],
+      (contextService, youtubeService) => {
+        spyOn(component, 'ngOnInit').and.callThrough();
+        fixture.detectChanges();
+
+        component.ngOnDestroy();
+
+        expect((component as any).trendingSubs$.closed).toBeTruthy();
+      }
+    )
+  );
 });

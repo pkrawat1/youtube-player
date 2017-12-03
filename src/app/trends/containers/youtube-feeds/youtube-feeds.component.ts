@@ -14,8 +14,8 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 export class YoutubeFeedsComponent implements OnInit, OnDestroy {
   public loader: any;
-  private country: any;
-  private trendingVideos: VideoFeed[] = [];
+  public country: any;
+  public trendingVideos: VideoFeed[] = [];
   private trendingSubs$: Subscription;
   private videoDetailSubs$: Subscription;
 
@@ -41,9 +41,10 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
    * videos from youtube api.
    * Updates loader flag before and after request is completed.
    * @param {string} countryCode
+   * @param {boolean} [isNewSearch=false]
    * @memberof YoutubeFeedsComponent
    */
-  public loadVideos(countryCode: string, isNewSearch: boolean): void {
+  public loadVideos(countryCode: string, isNewSearch = false): void {
     this.loader = true;
     this.trendingSubs$ = this.youtubeService
       .getTrendingVideos(this.country)
