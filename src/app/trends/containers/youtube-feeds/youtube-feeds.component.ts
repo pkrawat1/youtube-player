@@ -30,7 +30,7 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
       (lang) => {
         this.country = this.appContext.getCountry();
         this.resetAllSubscription();
-        // this.trendingVideos = this.trendingVideos.slice(0, 24);
+        window.scrollTo(0, 0);
         this.loadVideos(this.country, true);
       }
     );
