@@ -76,14 +76,22 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
    * @memberof YoutubeFeedsComponent
    */
   public getVideoStats(videoIndex: number, videoId: string): void {
-    this.videoDetailSubs$ = this.youtubeService.getVideoDetails(videoId).subscribe((video) => {
-      if (this.videoDetailSubs$) { this.videoDetailSubs$.unsubscribe(); }
-      // updating reference to trigger change detection
-      this.trendingVideos[videoIndex] = {
-        ...this.trendingVideos[videoIndex],
-        statistics: video.statistics
-      };
-    });
+    this.videoDetailSubs$ = this.youtubeService
+      .getVideoDetails(videoId)
+      .subscribe(
+        (video) => {
+          if (this.videoDetailSubs$) { this.videoDetailSubs$.unsubscribe(); }
+          // updating reference to trigger change detection
+          this.trendingVideos[videoIndex] = {
+            ...this.trendingVideos[videoIndex],
+            statistics: video.statistics
+          };
+        },
+        error => console.log(
+          `unable to load video with id: ${videoId} with error => `,
+          error
+        )
+      );
   }
 
   /**
