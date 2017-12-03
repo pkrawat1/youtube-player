@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./youtube-player.component.scss']
 })
 export class YoutubePlayerComponent implements OnInit {
-  public loader = true;
+  // public loader = true;
   public embedUrl$: Observable<SafeResourceUrl>;
 
   constructor(
@@ -35,7 +35,7 @@ export class YoutubePlayerComponent implements OnInit {
   }
 
   public loadVideo(): void {
-    this.loader = false;
+    // this.loader = false;
   }
 
 }
