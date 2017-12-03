@@ -5,6 +5,10 @@ export interface VideoFeed {
   publishedAt: string;
   viewCount: number;
   likeCount: number;
+  statistics?: {
+    likeCount: number;
+    viewCount: number;
+  };
   snippet: {
     title: string;
     thumbnails: {

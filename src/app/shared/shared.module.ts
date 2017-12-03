@@ -11,7 +11,7 @@ import { NgbTypeaheadModule, NgbModule, NgbTypeaheadConfig } from '@ng-bootstrap
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MomentModule } from 'angular2-moment';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-
+import { ToastyModule } from 'ng2-toasty';
 
 const sharedComponents = [HeaderComponent];
 
@@ -25,6 +25,7 @@ const sharedComponents = [HeaderComponent];
     InfiniteScrollModule,
     LazyLoadImageModule,
     HttpClientModule,
+    ToastyModule.forRoot(),
   ],
   declarations: [
     ...sharedComponents,
@@ -38,6 +39,7 @@ const sharedComponents = [HeaderComponent];
     LimitToPipe,
     LazyLoadImageModule,
     InfiniteScrollModule,
+    ToastyModule,
   ]
 })
 export class SharedModule { }

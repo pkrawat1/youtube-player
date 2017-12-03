@@ -30,7 +30,8 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
     this.appContext.countryChanged.subscribe(
       (lang) => {
         this.country = this.appContext.getCountry();
-        this.trendingVideos = [];
+        // In order to reuse the view and avoid DOM rerender
+        this.trendingVideos = new Array(24);
         this.loadVideos(this.country);
       }
     );
@@ -69,13 +70,13 @@ export class YoutubeFeedsComponent implements OnInit, OnDestroy {
    * @memberof YoutubeFeedsComponent
    */
   public getVideoStats(videoIndex: number, videoId: string): void {
-    this.videoDetailSubs$ = this.youtubeService.getVideoDetails(videoId).subscribe((result) => {
+    this.videoDetailSubs$ = this.youtubeService.getVideoDetails(videoId).subscribe((video) => {
       if (this.videoDetailSubs$) { this.videoDetailSubs$.unsubscribe(); }
       // updating reference to trigger change detection
       this.trendingVideos[videoIndex] = {
         ...this.trendingVideos[videoIndex],
-        viewCount: result.items[0].statistics.viewCount,
-        likeCount: result.items[0].statistics.likeCount
+        viewCount: video.statistics.viewCount,
+        likeCount: video.statistics.likeCount
       } as VideoFeed;
     });
   }

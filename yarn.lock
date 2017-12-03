@@ -177,16 +177,6 @@
     source-map "^0.5.6"
     tree-kill "^1.0.0"
 
-"@ngx-progressbar/core@3.0.0", "@ngx-progressbar/core@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@ngx-progressbar/core/-/core-3.0.0.tgz#d8b9bdcdb760925970906466b4c2c3c4c468d8c2"
-
-"@ngx-progressbar/http-client@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@ngx-progressbar/http-client/-/http-client-3.0.0.tgz#25344110e033e8d2205443821acddca5fa7e34c4"
-  dependencies:
-    "@ngx-progressbar/core" "3.0.0"
-
 "@schematics/angular@~0.1.8":
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-0.1.8.tgz#2c98cda013a2b87ff457a749775b95b3a2475698"
@@ -1543,7 +1533,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-dateformat@^1.0.11:
+dateformat@^1.0.11, dateformat@^1.0.6:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-1.0.12.tgz#9f124b67594c937ff706932e4a642cca8dbbfee9"
   dependencies:
@@ -3335,7 +3325,7 @@ istanbul-reports@^1.1.3:
   dependencies:
     handlebars "^4.0.3"
 
-istanbul@0.4.5, istanbul@^0.4.3:
+istanbul@0.4.5, istanbul@^0.4.0, istanbul@^0.4.3:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/istanbul/-/istanbul-0.4.5.tgz#65c7d73d4c4da84d4f3ac310b918fb0b8033733b"
   dependencies:
@@ -3494,6 +3484,16 @@ karma-coverage-istanbul-reporter@^1.2.1:
   dependencies:
     istanbul-api "^1.1.8"
     minimatch "^3.0.4"
+
+karma-coverage@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/karma-coverage/-/karma-coverage-1.1.1.tgz#5aff8b39cf6994dc22de4c84362c76001b637cf6"
+  dependencies:
+    dateformat "^1.0.6"
+    istanbul "^0.4.0"
+    lodash "^3.8.0"
+    minimatch "^3.0.0"
+    source-map "^0.5.1"
 
 karma-jasmine-html-reporter@^0.2.2:
   version "0.2.2"
@@ -4123,6 +4123,10 @@ negotiator@0.6.1:
 ng-lazyload-image@^3.3.3:
   version "3.3.5"
   resolved "https://registry.yarnpkg.com/ng-lazyload-image/-/ng-lazyload-image-3.3.5.tgz#41f3989e40015e777d001412ce0b0d0ab3c63923"
+
+ng2-toasty@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/ng2-toasty/-/ng2-toasty-4.0.3.tgz#ea78ef8d18757d41ebaba11bd9f90a543f58fd7a"
 
 ngx-infinite-scroll@^0.7.0:
   version "0.7.0"
@@ -6044,7 +6048,7 @@ source-map@0.1.x:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@0.5.x, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1:
+source-map@0.5.x, source-map@^0.5.1, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 

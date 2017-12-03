@@ -1,3 +1,8 @@
+export interface Country {
+  name: string;
+  code: string;
+}
+
 export const countryList = [
   { name: 'Afghanistan', code: 'AF' },
   { name: 'Åland Islands', code: 'AX' },

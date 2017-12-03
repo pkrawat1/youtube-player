@@ -1,3 +1,4 @@
+import { Country } from './../../core/data/country-list';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -26,7 +27,7 @@ export class HeaderComponent implements OnInit {
   constructor(public appContext: ContextService) {
   }
 
-  public selectCountry(country) {
+  public selectCountry(country: Country) {
     if (typeof country === 'object') {
       this.appContext.setCountry(country.code);
     }

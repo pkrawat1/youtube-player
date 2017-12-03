@@ -15,4 +15,10 @@ describe('ContextService', () => {
   it('should ...', inject([ContextService], (service: ContextService) => {
     expect(service).toBeTruthy();
   }));
+
+  it('should set Country', inject([ContextService], (service) => {
+    service.setCountry('in');
+    expect(service.country).toBe('in');
+    expect(service.getCountry()).toBe('in');
+  }));
 });
